@@ -1,17 +1,21 @@
 package com.epam.ofeitus.arithmeticcalculator.converter;
 
+import com.epam.ofeitus.arithmeticcalculator.operator.BinaryOperator;
+import com.epam.ofeitus.arithmeticcalculator.operator.OperatorProvider;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
 public class ExpressionNotationConverter {
-    private static int precedence(String ch)
+    private static int precedence(String token)
     {
-        return switch (ch) {
-            case "+", "-" -> 1;
-            case "*", "/" -> 2;
-            default -> -1;
-        };
+        BinaryOperator operator;
+        if ((operator = OperatorProvider.getOperator(token)) != null) {
+            return operator.getPrecedence();
+        } else {
+            return -1;
+        }
     }
 
     public static List<String> infixToPostfix(List<String> expression) throws ExpressionConverterException {
@@ -19,31 +23,30 @@ public class ExpressionNotationConverter {
 
         Stack<String> stack = new Stack<>();
 
-        for (String token : expression)
-        {
-            switch (token) {
-                case "(" -> stack.push(token);
-                case ")" -> {
-                    while (!stack.isEmpty() && !stack.peek().equals("(")) {
-                        postfix.add(stack.pop());
-                    }
-                    stack.pop();
+        for (String token : expression) {
+            if (token.equals("(")) {
+                stack.push(token);
+            } else if (token.equals(")")) {
+                while (!stack.isEmpty() && !stack.peek().equals("(")) {
+                    postfix.add(stack.pop());
                 }
-                case "+", "-", "*", "/" -> {
-                    while (!stack.isEmpty() && precedence(token) <= precedence(stack.peek())) {
-                        postfix.add(stack.pop());
-                    }
-                    stack.push(token);
+                stack.pop();
+            } else if (OperatorProvider.getOperator(token) != null) {
+                while (!stack.isEmpty() && precedence(token) <= precedence(stack.peek())) {
+                    postfix.add(stack.pop());
                 }
-                default -> postfix.add(token);
+                stack.push(token);
+            } else {
+                postfix.add(token);
             }
 
         }
 
         // pop all the operators from the stack
-        while (!stack.isEmpty()){
-            if (stack.peek().equals("("))
+        while (!stack.isEmpty()) {
+            if (stack.peek().equals("(")) {
                 throw new ExpressionConverterException("Invalid parentheses in expression");
+            }
             postfix.add(stack.pop());
         }
         return postfix;
