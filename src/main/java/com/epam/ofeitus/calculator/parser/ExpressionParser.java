@@ -1,4 +1,4 @@
-package com.epam.ofeitus.arithmeticcalculator.parser;
+package com.epam.ofeitus.calculator.parser;
 
 import java.util.List;
 

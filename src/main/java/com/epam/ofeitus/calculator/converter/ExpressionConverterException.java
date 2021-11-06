@@ -1,4 +1,4 @@
-package com.epam.ofeitus.arithmeticcalculator.converter;
+package com.epam.ofeitus.calculator.converter;
 
 public class ExpressionConverterException extends Exception {
     public ExpressionConverterException() {

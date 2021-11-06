@@ -1,4 +1,4 @@
-package com.epam.ofeitus.arithmeticcalculator.parser;
+package com.epam.ofeitus.calculator.parser;
 
 public class ExpressionParserException extends Exception {
     public ExpressionParserException() {

@@ -1,7 +1,7 @@
-package com.epam.ofeitus.arithmeticcalculator.evaluator;
+package com.epam.ofeitus.calculator.evaluator;
 
-import com.epam.ofeitus.arithmeticcalculator.operator.BinaryOperator;
-import com.epam.ofeitus.arithmeticcalculator.operator.OperatorProvider;
+import com.epam.ofeitus.calculator.operator.BinaryOperator;
+import com.epam.ofeitus.calculator.operator.OperatorProvider;
 
 import java.util.List;
 import java.util.Stack;
