@@ -1,12 +1,10 @@
 package validator;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
 import java.util.Stack;
 
 public class ParenthesesValidator {
     public static boolean validateParentheses(String expression) {
-        Stack<Character> stack  = new Stack<Character>();
+        Stack<Character> stack  = new Stack<>();
         for(int i = 0; i < expression.length(); i++) {
             char c = expression.charAt(i);
             if(c == '[' || c == '(' || c == '{' ) {

@@ -27,7 +27,7 @@ public class ExpressionNotationConverter {
         }
     }
 
-    public static List<String> infixToPostfix(List<String> expression) throws ExpressionConverterException {
+    public static List<String> infixToPostfix(List<String> expression) {
         List<String> postfix = new ArrayList<>();
 
         Stack<String> stack = new Stack<>();
