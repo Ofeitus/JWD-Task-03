@@ -3,7 +3,7 @@ package com.epam.ofeitus.calculator.parser.impl;
 import com.epam.ofeitus.calculator.operator.OperatorProvider;
 import com.epam.ofeitus.calculator.parser.ExpressionParser;
 import com.epam.ofeitus.calculator.parser.ExpressionParserException;
-import validator.ParenthesesValidator;
+import com.epam.ofeitus.calculator.validator.ParenthesesValidator;
 
 import java.util.ArrayList;
 import java.util.List;

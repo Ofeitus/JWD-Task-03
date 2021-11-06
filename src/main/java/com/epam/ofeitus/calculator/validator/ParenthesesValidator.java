@@ -1,4 +1,4 @@
-package validator;
+package com.epam.ofeitus.calculator.validator;
 
 import java.util.Stack;
 
